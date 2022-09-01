@@ -26,6 +26,38 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * Changes from Qualcomm Innovation Center are provided under the following license:
+ *
+ * Copyright (c) 2022, Qualcomm Innovation Center, Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *	* Redistributions of source code must retain the above copyright
+ *	  notice, this list of conditions and the following disclaimer.
+ *	* Redistributions in binary form must reproduce the above
+ *	  copyright notice, this list of conditions and the following
+ *	  disclaimer in the documentation and/or other materials provided
+ *	  with the distribution.
+ *	* Neither the name of Qualcomm Innovation Center, Inc. nor the
+ *	  names of its contributors may be used to endorse or promote products
+ *	  derived from this software without specific prior written permission.
+ *
+ *
+ * NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED
+ * BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS
+ * AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT HOLDER
+ * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ *(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #include <unordered_map>
@@ -778,9 +810,9 @@ namespace implementation {
 			TemperatureType::SKIN,
 			{ "quiet-therm" },
 			"skin",
-			40000,
+			46000,
 			95000,
-			40000,
+			46000,
 			true,
 		},
 	};
@@ -931,6 +963,153 @@ namespace implementation {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_anorak =
+	{
+		"cpu-0-0-0",
+		"cpu-0-0-1",
+		"cpu-0-1-0",
+		"cpu-0-1-1",
+		"cpu-1-0-0",
+		"cpu-1-0-1",
+		"cpu-1-1-0",
+		"cpu-1-1-1",
+		"cpu-1-2-0",
+		"cpu-1-2-1",
+		"cpu-1-3-0",
+		"cpu-1-3-1",
+	};
+
+	std::vector<struct target_therm_cfg>  anorak_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_anorak,
+			"",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-0" },
+			"nsp0",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-1" },
+			"nsp1",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-2" },
+			"nsp2",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0" },
+			"GPU0",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1" },
+			"GPU1",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-2" },
+			"GPU2",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-3" },
+			"GPU3",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-4" },
+			"GPU4",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-5" },
+			"GPU5",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-6" },
+			"GPU6",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-7" },
+			"GPU7",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+	};
+	std::vector<struct target_therm_cfg>  anorak_specific = {
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pm8550b-ibat-lvl0" },
+			"ibat",
+			9000,
+			10000,
+			9000,
+			true,
+		},
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-0" },
+			"skin",
+			55000,
+			95000,
+			55000,
+			true,
+		},
+	};
+
 	struct target_therm_cfg bat_conf = {
 		TemperatureType::BATTERY,
 		{ "battery" },
@@ -1008,6 +1187,7 @@ namespace implementation {
 		{525, neo_common},
 		{554, neo_common},
 		{537, parrot_common},
+		{549, anorak_common},
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -1029,6 +1209,7 @@ namespace implementation {
 		{531, waipio_specific}, // cape
 		{540, waipio_specific}, // cape
 		{537, parrot_specific},
+		{549, anorak_specific},
 	};
 
 	std::vector<struct target_therm_cfg> add_target_config(
