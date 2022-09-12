@@ -909,11 +909,11 @@ namespace implementation {
 		},
 		{
 			TemperatureType::SKIN,
-			{ "xo-therm" },
+			{ "skin-msm-therm" },
 			"skin",
-			55000,
+			46500,
 			95000,
-			55000,
+			46500,
 			true,
 		},
 	};
@@ -1013,6 +1013,8 @@ namespace implementation {
 		{540, waipio_common}, // cape
 		{519, kalama_common}, //Kalama
 		{536, kalama_common}, //Kalamap
+		{600, kalama_common}, //Kalama_sg
+		{601, kalama_common}, //Kalamap_sg
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -1033,6 +1035,8 @@ namespace implementation {
 		{540, waipio_specific}, // cape
 		{519, kalama_specific}, //Kalama
 		{536, kalama_specific}, //Kalamap
+		{600, kalama_specific}, //Kalama_sg
+		{601, kalama_specific}, //Kalamap_sg
 	};
 
 	std::vector<struct target_therm_cfg> add_target_config(
