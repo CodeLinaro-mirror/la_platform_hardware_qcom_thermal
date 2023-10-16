@@ -188,14 +188,14 @@ namespace implementation {
 
 	std::vector<std::string> cpu_sensors_trinket =
 	{
-		"cpuss-0-usr",
-		"cpuss-0-usr",
-		"cpuss-0-usr",
-		"cpuss-0-usr",
-		"cpu-1-0-usr",
-		"cpu-1-1-usr",
-		"cpu-1-2-usr",
-		"cpu-1-3-usr",
+		"cpuss-0",
+		"cpuss-0",
+		"cpuss-0",
+		"cpuss-0",
+		"cpu-1-0",
+		"cpu-1-1",
+		"cpu-1-2",
+		"cpu-1-3",
 	};
 
 	std::vector<struct target_therm_cfg> sensor_cfg_trinket =
@@ -211,7 +211,7 @@ namespace implementation {
 		},
 		{
 			TemperatureType::GPU,
-			{ "gpu-usr" },
+			{ "gpu" },
 			"GPU",
 			95000,
 			115000,
@@ -220,7 +220,7 @@ namespace implementation {
 		},
 		{
 			TemperatureType::SKIN,
-			{ "xo-therm-adc" },
+			{ "xo-therm" },
 			"skin",
 			40000,
 			95000,
@@ -229,7 +229,7 @@ namespace implementation {
 		},
 		{
 			TemperatureType::BCL_VOLTAGE,
-			{ "pmi632-vbat-lvl0" },
+			{ "vbat" },
 			"vbat",
 			3000,
 			2800,
@@ -247,12 +247,12 @@ namespace implementation {
 		},
 		{
 			TemperatureType::BCL_PERCENTAGE,
-			{ "soc" },
-			"soc",
-			10,
-			2,
-			10,
-			false,
+			{ "socd" },
+			"socd",
+			90,
+			99,
+			90,
+			true,
 		},
 	};
 
@@ -1039,6 +1039,87 @@ namespace implementation {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_crow =
+	{
+		"cpu-0-0",
+		"cpu-0-1",
+		"cpu-0-2",
+		"cpu-0-3",
+		"cpu-1-0",
+		"cpu-1-2",
+		"cpu-1-4",
+		"cpu-1-6",
+	};
+
+	std::vector<struct target_therm_cfg>  crow_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_crow,
+			"",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0" },
+			"GPU0",
+			102000,
+			115000,
+			102000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1" },
+			"GPU1",
+			102000,
+			115000,
+			102000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-0" },
+			"nsp0",
+			100000,
+			115000,
+			100000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-1" },
+			"nsp1",
+			100000,
+			115000,
+			100000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-2" },
+			"nsp2",
+			100000,
+			115000,
+			100000,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  crow_specific = {
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-3" },
+			"skin",
+			60000,
+			95000,
+			60000,
+			true,
+		},
+	};
+
 	std::vector<struct target_therm_cfg>  diwali_specific = {
 		{
 			TemperatureType::BCL_CURRENT,
@@ -1122,6 +1203,8 @@ namespace implementation {
 		{362, sensor_cfg_msmnile},
 		{367, sensor_cfg_msmnile},
 		{356, kona_common}, // kona
+		{481, kona_common}, //kona iot
+		{548, kona_common}, //kona iot
 		{415, lahaina_common}, // lahaina
 		{439, lahaina_common}, // lahainap
 		{456, lahaina_common}, // lahaina-atp
@@ -1146,11 +1229,14 @@ namespace implementation {
 		{604, kalama_common}, //Kalama_qcm
 		{486, sensor_cfg_monaco}, // monaco
 		{517, sensor_cfg_monaco}, // monaco
+		{608, crow_common}, //crow
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
 		msm_soc_specific = {
 		{356, kona_specific}, // kona
+		{481, kona_specific}, //kona iot
+		{548, kona_specific}, //kona iot
 		{415, lahaina_specific}, // lahaina
 		{439, lahaina_specific}, // lahainap
 		{456, lahaina_specific}, // lahaina-atp
@@ -1170,6 +1256,7 @@ namespace implementation {
 		{601, kalama_specific}, //Kalamap_sg
 		{603, kalama_specific}, //Kalama_qcs
 		{604, kalama_specific}, //Kalama_qcm
+		{608, crow_specific}, //crow
 	};
 
 	std::vector<struct target_therm_cfg> add_target_config(
