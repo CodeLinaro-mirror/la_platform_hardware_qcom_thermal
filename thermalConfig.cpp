@@ -48,14 +48,14 @@ namespace implementation {
 
 	std::vector<std::string> cpu_sensors_bengal =
 	{
-		"cpuss-2-usr",
-		"cpuss-2-usr",
-		"cpuss-2-usr",
-		"cpuss-2-usr",
-		"cpu-1-0-usr",
-		"cpu-1-1-usr",
-		"cpu-1-2-usr",
-		"cpu-1-3-usr",
+		"cpuss-0",
+		"cpuss-1",
+		"cpuss-2",
+		"cpuss-2",
+		"cpu-1-0",
+		"cpu-1-1",
+		"cpu-1-2",
+		"cpu-1-3",
 	};
 
 	std::vector<struct target_therm_cfg> sensor_cfg_bengal =
@@ -71,7 +71,7 @@ namespace implementation {
 		},
 		{
 			TemperatureType::GPU,
-			{ "gpu-usr" },
+			{ "gpu" },
 			"GPU",
 			95000,
 			115000,
@@ -80,21 +80,12 @@ namespace implementation {
 		},
 		{
 			TemperatureType::SKIN,
-			{ "xo-therm-usr" },
+			{ "xo-therm" },
 			"skin",
 			40000,
 			95000,
 			40000,
 			true,
-		},
-		{
-			TemperatureType::BCL_VOLTAGE,
-			{ "pmi632-vbat-lvl0" },
-			"vbat",
-			3000,
-			2800,
-			3000,
-			false,
 		},
 		{
 			TemperatureType::BCL_CURRENT,
@@ -107,11 +98,11 @@ namespace implementation {
 		},
 		{
 			TemperatureType::BCL_PERCENTAGE,
-			{ "soc" },
-			"soc",
-			10,
-			2,
-			10,
+			{ "socd" },
+			"socd",
+			90,
+			99,
+			90,
 			false,
 		},
 	};
@@ -188,14 +179,14 @@ namespace implementation {
 
 	std::vector<std::string> cpu_sensors_trinket =
 	{
-		"cpuss-0-usr",
-		"cpuss-0-usr",
-		"cpuss-0-usr",
-		"cpuss-0-usr",
-		"cpu-1-0-usr",
-		"cpu-1-1-usr",
-		"cpu-1-2-usr",
-		"cpu-1-3-usr",
+		"cpuss-0",
+		"cpuss-0",
+		"cpuss-0",
+		"cpuss-0",
+		"cpu-1-0",
+		"cpu-1-1",
+		"cpu-1-2",
+		"cpu-1-3",
 	};
 
 	std::vector<struct target_therm_cfg> sensor_cfg_trinket =
@@ -211,7 +202,7 @@ namespace implementation {
 		},
 		{
 			TemperatureType::GPU,
-			{ "gpu-usr" },
+			{ "gpu" },
 			"GPU",
 			95000,
 			115000,
@@ -220,7 +211,7 @@ namespace implementation {
 		},
 		{
 			TemperatureType::SKIN,
-			{ "xo-therm-adc" },
+			{ "xo-therm" },
 			"skin",
 			40000,
 			95000,
@@ -229,7 +220,7 @@ namespace implementation {
 		},
 		{
 			TemperatureType::BCL_VOLTAGE,
-			{ "pmi632-vbat-lvl0" },
+			{ "vbat" },
 			"vbat",
 			3000,
 			2800,
@@ -247,12 +238,12 @@ namespace implementation {
 		},
 		{
 			TemperatureType::BCL_PERCENTAGE,
-			{ "soc" },
-			"soc",
-			10,
-			2,
-			10,
-			false,
+			{ "socd" },
+			"socd",
+			90,
+			99,
+			90,
+			true,
 		},
 	};
 
@@ -1065,18 +1056,18 @@ namespace implementation {
 			TemperatureType::GPU,
 			{ "gpuss-0" },
 			"GPU0",
-			95000,
+			102000,
 			115000,
-			95000,
+			102000,
 			true,
 		},
 		{
 			TemperatureType::GPU,
 			{ "gpuss-1" },
 			"GPU1",
-			95000,
+			102000,
 			115000,
-			95000,
+			102000,
 			true,
 		},
 		{
@@ -1137,6 +1128,75 @@ namespace implementation {
 			40000,
 			95000,
 			40000,
+			true,
+		},
+	};
+
+	std::vector<std::string> cpu_sensors_lemansAU =
+	{
+		"cpu-0-0-0",
+		"cpu-0-1-0",
+		"cpu-0-2-0",
+		"cpu-0-3-0",
+		"cpu-1-0-0",
+		"cpu-1-1-0",
+		"cpu-1-2-0",
+		"cpu-1-3-0",
+	};
+
+	std::vector<struct target_therm_cfg>  lemansAU_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_lemansAU,
+			"",
+			105000,
+			118000,
+			105000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0" },
+			"GPU0",
+			105000,
+			118000,
+			105000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1" },
+			"GPU1",
+			105000,
+			118000,
+			105000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-2" },
+			"GPU2",
+			105000,
+			118000,
+			105000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsp-0-0-0" },
+			"nsp0",
+			105000,
+			118000,
+			105000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsp-1-0-0" },
+			"nsp1",
+			105000,
+			118000,
+			105000,
 			true,
 		},
 	};
@@ -1230,6 +1290,8 @@ namespace implementation {
 		{486, sensor_cfg_monaco}, // monaco
 		{517, sensor_cfg_monaco}, // monaco
 		{608, crow_common}, //crow
+		{644, crow_common}, //crow 4G
+		{532, lemansAU_common}, //Lemans auto
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -1257,6 +1319,7 @@ namespace implementation {
 		{603, kalama_specific}, //Kalama_qcs
 		{604, kalama_specific}, //Kalama_qcm
 		{608, crow_specific}, //crow
+		{644, crow_specific}, //crow
 	};
 
 	std::vector<struct target_therm_cfg> add_target_config(
