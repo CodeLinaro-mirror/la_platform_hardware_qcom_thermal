@@ -1398,14 +1398,6 @@ std::vector<std::string> cpu_sensors_cliffs = {
 
 	std::vector<struct target_therm_cfg>  pitti_specific = {
 		{
-			TemperatureType::BCL_CURRENT,
-			{ "pm7250b-ibat-lvl0" },
-			"ibat",
-			6000,
-			7500,
-			true,
-		},
-		{
 			TemperatureType::SKIN,
 			{ "sys-therm-3" },
 			"skin",
@@ -1598,14 +1590,6 @@ std::vector<std::string> cpu_sensors_cliffs = {
 		},
 		{
 			TemperatureType::NPU,
-			{ "nsphvx-1" },
-			"nsp1",
-			95000,
-			115000,
-			true,
-		},
-		{
-			TemperatureType::NPU,
 			{ "nsphmx-0" },
 			"nsp2",
 			95000,
@@ -1697,6 +1681,8 @@ std::vector<std::string> cpu_sensors_cliffs = {
 		{652, niobe_common}, // Matrix_4k
 		{636, volcano_common}, //milos
 		{640, volcano_common}, //milos6
+		{657, volcano_common}, //milos IOT with modem
+		{658, volcano_common}, //milos IOT
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -1728,6 +1714,8 @@ std::vector<std::string> cpu_sensors_cliffs = {
 		{652, niobe_specific}, // Matrix_4k
 		{636, volcano_specific}, //milos
 		{640, volcano_specific}, //milos6
+		{657, volcano_specific}, //milos IOT with modem
+		{658, volcano_specific}, //milos IOT
 	};
 
 	const std::unordered_map<int, bool>
