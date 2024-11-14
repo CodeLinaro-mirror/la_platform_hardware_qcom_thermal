@@ -48,7 +48,7 @@ namespace aidl {
 namespace android {
 namespace hardware {
 namespace thermal {
-
+	constexpr std::string_view hwPlatformPath("/sys/devices/soc0/hw_platform");
 	constexpr std::string_view socIDPath("/sys/devices/soc0/soc_id");
 
 	std::vector<std::string> cpu_sensors_bengal =
@@ -117,6 +117,7 @@ namespace thermal {
 			[SEVERE] = 4000,
 			[SHUTDOWN] = 4200,
 			},
+			true,
 			true,
 		},
 		{
@@ -196,6 +197,7 @@ namespace thermal {
 			[SEVERE] = 5500,
 			[SHUTDOWN] = 6000,
 			},
+			true,
 			true,
 		},
 		{
@@ -277,6 +279,7 @@ namespace thermal {
 			[SHUTDOWN] = 4200,
 			},
 			true,
+			true,
 		},
 		{
 			TemperatureType::BCL_PERCENTAGE,
@@ -346,6 +349,7 @@ namespace thermal {
 			[SEVERE] = 4500,
 			[SHUTDOWN] = 5000,
 			},
+			true,
 			true,
 		},
 		{
@@ -425,6 +429,7 @@ namespace thermal {
 			[SHUTDOWN] = 6000,
 			},
 			true,
+			true,
 		},
 		{
 			TemperatureType::BCL_PERCENTAGE,
@@ -492,6 +497,7 @@ namespace thermal {
 			[SEVERE] = 5500,
 			[SHUTDOWN] = 6000,
 			},
+			true,
 			true,
 		},
 	};
@@ -561,6 +567,7 @@ namespace thermal {
 			[SEVERE] = 4500,
 			[SHUTDOWN] = 5000,
 			},
+			true,
 			true,
 		},
 		{
@@ -641,6 +648,7 @@ namespace thermal {
 			[SEVERE] = 4500,
 			[SHUTDOWN] = 5000,
 			},
+			true,
 			true,
 		},
 		{
@@ -726,6 +734,7 @@ namespace thermal {
 			[SEVERE] = 6000,
 			[SHUTDOWN] = 7500,
 			},
+			true,
 			true,
 		},
 		{
@@ -946,6 +955,7 @@ namespace thermal {
 			[SHUTDOWN] = 7500,
 			},
 			true,
+			true,
 		},
 		{
 			TemperatureType::SKIN,
@@ -1118,6 +1128,7 @@ namespace thermal {
 			[SHUTDOWN] = 10000,
 			},
 			true,
+			true,
 		},
 		{
 			TemperatureType::SKIN,
@@ -1144,6 +1155,7 @@ namespace thermal {
 			[SEVERE] = 6000,
 			[SHUTDOWN] = 7500,
 			},
+			true,
 			true,
 		},
 		{
@@ -1371,6 +1383,7 @@ namespace thermal {
 			[SEVERE] = 9000,
 			[SHUTDOWN] = 10000,
 			},
+			true,
 			true,
 		},
 		{
@@ -1775,12 +1788,12 @@ namespace thermal {
 			{ "sys-therm-2" },
 			"skin",
 			{
-			[LIGHT] = 36500,
-			[MODERATE] = 40000,
-			[SEVERE] = 46500,
-			[CRITICAL] = 50000,
-			[EMERGENCY] = 55000,
-			[SHUTDOWN] = 95000,
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
+			[SHUTDOWN] = 90000,
 			},
 			true,
 		},
@@ -1861,6 +1874,7 @@ namespace thermal {
 			[SHUTDOWN] = 7500,
 			},
 			true,
+			true,
 		},
 		{
 			TemperatureType::SKIN,
@@ -1932,6 +1946,7 @@ namespace thermal {
 			[SEVERE] = 1100,
 			[SHUTDOWN] = 1500,
 			},
+			true,
 			true,
 		},
 	};
@@ -2088,6 +2103,235 @@ namespace thermal {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_ravelin =
+	{
+		"cpu-0-0",
+		"cpu-0-1",
+		"cpu-0-2",
+		"cpu-0-3",
+		"cpu-0-4",
+		"cpu-0-5",
+		"cpu-1-0",
+		"cpu-1-2",
+	};
+
+	std::vector<struct target_therm_cfg>  ravelin_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_ravelin,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss" },
+			"GPU",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-1" },
+			"skin",
+			{
+			[LIGHT] = 50000,
+			[MODERATE] = 52000,
+			[SEVERE] = 55000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 65000,
+			[SHUTDOWN] = 95000,
+			},
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  ravelin_specific_qrd = {
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pmi632-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  ravelin_specific_idp = {
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pm7250b-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<std::string> cpu_sensors_tuna = {
+		"cpu-0-0-0",
+		"cpu-0-1-0",
+		"cpu-1-0-0",
+		"cpu-1-1-0",
+		"cpu-1-2-0",
+		"cpu-1-3-0",
+		"cpu-1-4-0",
+		"cpu-2-0-0",
+	};
+
+	std::vector<struct target_therm_cfg> tuna_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_tuna,
+			"",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0" },
+			"GPU0",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1" },
+			"GPU1",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-2" },
+			"GPU2",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-3" },
+			"GPU3",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-4" },
+			"GPU4",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-5" },
+			"GPU5",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsphvx-0" },
+			"nsp0",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsphvx-1" },
+			"nsp1",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsphmx-0" },
+			"nsp3",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsphmx-1" },
+			"nsp4",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg> tuna_specific = {
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-3" },
+			"skin",
+			{
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
+			[SHUTDOWN] = 90000,
+			},
+			true,
+		},
+	};
+
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
 		msm_soc_map = {
 		{417, sensor_cfg_bengal}, // bengal
@@ -2136,6 +2380,7 @@ namespace thermal {
 		{601, kalama_common}, //Kalamap_sg
 		{557, pineapple_common}, //Pineapple
 		{577, pineapple_common}, //Pineapplep
+		{696, pineapple_common}, //Pineapple compute
 		{618, sun_specific}, //Sun
 		{639, sun_specific}, //Sunp
 		{537, parrot_common}, //Netrani mobile
@@ -2153,6 +2398,13 @@ namespace thermal {
 		{380, sensor_cfg_talos_common},
 		{384, sensor_cfg_talos_common},
 		{405, sensor_cfg_sa8195_common},
+		{568, ravelin_common}, //Clarence Mobile
+		{581, ravelin_common}, //Clarence IOT
+		{582, ravelin_common}, //Clarence IOT without modem
+		{653, ravelin_common}, //Clarence Gaming
+		{654, ravelin_common}, //Clarence Gaming
+		{681, tuna_common}, //Bonito
+		{655, tuna_common}, //Bonito
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -2177,12 +2429,15 @@ namespace thermal {
 		{601, kalama_specific}, //Kalamap_sg
 		{557, pineapple_specific}, //Pineapple
 		{577, pineapple_specific}, //Pineapplep
+		{696, pineapple_specific}, //Pineapple compute
 		{537, parrot_specific}, //Netrani mobile
 		{583, parrot_specific}, //Netrani mobile without modem
 		{613, parrot_specific}, //Netrani APQ
 		{631, parrot_specific},
 		{663, parrot_specific}, //Netrani pro
 		{355, sensor_cfg_talos_specific},
+		{681, tuna_specific}, //Bonito
+		{655, tuna_specific}, //Bonito
 	};
 
 	const std::unordered_multimap<int, std::pair<int, std::vector<struct target_therm_cfg>>>
@@ -2203,8 +2458,15 @@ namespace thermal {
 		{380, "talosAU"},
 	};
 
+	const std::unordered_multimap<int, std::pair<std::string,
+				std::vector<struct target_therm_cfg>>>
+		msm_platform_specific = {
+		{568, std::make_pair("QRD", ravelin_specific_qrd)},
+		{568, std::make_pair("IDP", ravelin_specific_idp)},
+	};
+
 	std::vector<struct target_therm_cfg> add_target_config(
-			int socID, int lp,
+			int socID, std::string hwPlatform, int lp,
 			std::vector<struct target_therm_cfg> conf)
 	{
 		std::vector<struct target_therm_cfg> targetConf;
@@ -2216,14 +2478,26 @@ namespace thermal {
 						targetConf.end());
 		}
 
-		auto range = msm_limit_profile_specific.equal_range(socID);
-		auto it = range.first;
-		if (range.first != msm_limit_profile_specific.end()) {
-			for (; it != range.second; ++it) {
-				if (it->second.first != lp)
+		auto range1 = msm_limit_profile_specific.equal_range(socID);
+		auto it1 = range1.first;
+		if (range1.first != msm_limit_profile_specific.end()) {
+			for (; it1 != range1.second; ++it1) {
+				if (it1->second.first != lp)
 					continue;
-				targetConf = it->second.second;
+				targetConf = it1->second.second;
 				conf.insert(conf.end(), targetConf.begin(),targetConf.end());
+				break;
+			}
+		}
+
+		auto range2 = msm_platform_specific.equal_range(socID);
+		auto it2 = range2.first;
+		if (range2.first != msm_platform_specific.end()) {
+			for (; it2 != range2.second; ++it2) {
+				if (it2->second.first != hwPlatform)
+					continue;
+				targetConf = it2->second.second;
+				conf.insert(conf.end(), targetConf.begin(), targetConf.end());
 				break;
 			}
 		}
@@ -2237,6 +2511,7 @@ namespace thermal {
 		std::vector<struct target_therm_cfg>::iterator it_vec;
 		bool bcl_defined = false;
 		std::string soc_val;
+		std::string hwPlatform;
 		int ct = 0;
 		bool read_ok = false;
 		limitp = 0;
@@ -2246,6 +2521,7 @@ namespace thermal {
 				LOG(ERROR) <<"soc ID fetch error";
 				return;
 			}
+
 			try {
 				soc_id = std::stoi(soc_val, nullptr, 0);
 				read_ok = true;
@@ -2253,6 +2529,19 @@ namespace thermal {
 			catch (std::exception &err) {
 				LOG(ERROR) <<"soc id stoi err:" << err.what()
 					<< " buf:" << soc_val;
+			}
+
+			if (cmnInst.readFromFile(hwPlatformPath, hwPlatform) <= 0) {
+				LOG(ERROR) <<"hw Platform fetch error";
+				continue;
+			}
+
+			try {
+				if (!hwPlatform.empty())
+					LOG(INFO) <<"HW Platform is found";
+			}
+			catch (std::exception &err) {
+				LOG(ERROR) <<"hw Platform is not found:" << err.what();
 			}
 			ct++;
 		} while (!read_ok && ct < RETRY_CT);
@@ -2275,7 +2564,8 @@ namespace thermal {
 			LOG(ERROR) << "No config for soc ID: " << soc_id;
 			return;
 		}
-		thermalConfig = add_target_config(soc_id, limitp, it->second);
+		thermalConfig = add_target_config(soc_id, hwPlatform, limitp, it->second);
+
 		for (it_vec = thermalConfig.begin();
 				it_vec != thermalConfig.end(); it_vec++) {
 			if (it_vec->type == TemperatureType::BCL_PERCENTAGE)
