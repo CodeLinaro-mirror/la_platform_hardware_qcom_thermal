@@ -1909,7 +1909,7 @@ namespace thermal {
 			cpu_sensors_monaco,
 			"",
 			{
-			[SEVERE] = 95000,
+			[SEVERE] = 85000,
 			[SHUTDOWN] = 115000,
 			},
 			true,
@@ -1919,7 +1919,7 @@ namespace thermal {
 			{ "gpu" },
 			"gpu",
 			{
-			[SEVERE] = 95000,
+			[SEVERE] = 85000,
 			[SHUTDOWN] = 115000,
 			},
 			true,
