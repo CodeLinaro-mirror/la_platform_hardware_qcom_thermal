@@ -1034,6 +1034,126 @@ namespace implementation {
 		},
 	};
 
+	std::vector<struct target_therm_cfg>  kalama_np_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_kalama,
+			"",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0" },
+			"GPU0",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1" },
+			"GPU1",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-2" },
+			"GPU2",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-3" },
+			"GPU3",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-4" },
+			"GPU4",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-5" },
+			"GPU5",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-6" },
+			"GPU6",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-7" },
+			"GPU7",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-0" },
+			"nsp0",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-1" },
+			"nsp1",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-2" },
+			"nsp2",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-3" },
+			"nsp3",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+	};
+
 	std::vector<std::string> cpu_sensors_crow =
 	{
 		"cpu-0-0",
@@ -1346,7 +1466,7 @@ namespace implementation {
 		{601, kalama_common}, //Kalamap_sg
 		{603, kalama_common}, //Kalama_qcs
 		{604, kalama_common}, //Kalama_qcm
-		{668, kalama_common}, //Kalama_non-pop_qcs
+		{668, kalama_np_common}, //Kalama_non-pop_qcs
 		{688, kalama_common}, //Kalama_non-pop_qcm
 		{486, sensor_cfg_monaco}, // monaco
 		{517, sensor_cfg_monaco}, // monaco
@@ -1382,7 +1502,6 @@ namespace implementation {
 		{601, kalama_specific}, //Kalamap_sg
 		{603, kalama_specific}, //Kalama_qcs
 		{604, kalama_specific}, //Kalama_qcm
-		{668, kalama_specific}, //Kalama_non-pop_qcs
 		{688, kalama_specific}, //Kalama_non-pop_qcm
 		{608, crow_specific}, //crow
 		{644, crow_specific}, //crow
