@@ -34,7 +34,7 @@
 
  /* Changes from Qualcomm Innovation Center are provided under the following license:
 
-Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
 SPDX-License-Identifier: BSD-3-Clause-Clear */
 
 #include <unordered_map>
@@ -2546,6 +2546,8 @@ namespace thermal {
 		{696, pineapple_common}, //Pineapple compute
 		{618, sun_specific}, //Sun
 		{639, sun_specific}, //Sunp
+		{705, sun_specific}, //CQ8750S
+		{706, sun_specific}, //CQ8725S
 		{537, parrot_common}, //Netrani mobile
 		{583, parrot_common}, //Netrani mobile without modem
 		{613, parrot_common}, //Netrani APQ
@@ -2619,6 +2621,10 @@ namespace thermal {
 		{618, std::make_pair(1, sun_profile1)},
 		{639, std::make_pair(0, sun_profile0)},
 		{639, std::make_pair(1, sun_profile1)},
+		{705, std::make_pair(0, sun_profile0)},
+		{705, std::make_pair(1, sun_profile1)},
+		{706, std::make_pair(0, sun_profile0)},
+		{706, std::make_pair(1, sun_profile1)},
 	};
 
 	const std::unordered_map<int, std::string>
