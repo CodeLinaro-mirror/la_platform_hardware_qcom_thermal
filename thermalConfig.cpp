@@ -1467,7 +1467,7 @@ namespace implementation {
 		{603, kalama_common}, //Kalama_qcs
 		{604, kalama_common}, //Kalama_qcm
 		{668, kalama_np_common}, //Kalama_non-pop_qcs
-		{688, kalama_common}, //Kalama_non-pop_qcm
+		{688, kalama_np_common}, //Kalama_non-pop_qcm
 		{486, sensor_cfg_monaco}, // monaco
 		{517, sensor_cfg_monaco}, // monaco
 		{608, crow_common}, //crow
