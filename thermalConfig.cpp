@@ -2383,7 +2383,7 @@ namespace thermal {
 			"",
 			{
 			[SEVERE] = 95000,
-			[SHUTDOWN] = 105000,
+			[SHUTDOWN] = 115000,
 			},
 			true,
 			true,
@@ -2394,7 +2394,7 @@ namespace thermal {
 			"GPU0",
 			{
 			[SEVERE] = 95000,
-			[SHUTDOWN] = 105000,
+			[SHUTDOWN] = 115000,
 			},
 			true,
 			true,
@@ -2405,7 +2405,7 @@ namespace thermal {
 			"GPU1",
 			{
 			[SEVERE] = 95000,
-			[SHUTDOWN] = 105000,
+			[SHUTDOWN] = 115000,
 			},
 			true,
 			true,
@@ -2416,7 +2416,7 @@ namespace thermal {
 			"nsp0",
 			{
 			[SEVERE] = 95000,
-			[SHUTDOWN] = 105000,
+			[SHUTDOWN] = 115000,
 			},
 			true,
 			true,
@@ -2427,7 +2427,7 @@ namespace thermal {
 			"nsp1",
 			{
 			[SEVERE] = 95000,
-			[SHUTDOWN] = 105000,
+			[SHUTDOWN] = 115000,
 			},
 			true,
 			true,
@@ -2438,7 +2438,7 @@ namespace thermal {
 			"nsp3",
 			{
 			[SEVERE] = 95000,
-			[SHUTDOWN] = 105000,
+			[SHUTDOWN] = 115000,
 			},
 			true,
 			true,
@@ -2449,7 +2449,7 @@ namespace thermal {
 			"nsp4",
 			{
 			[SEVERE] = 95000,
-			[SHUTDOWN] = 105000,
+			[SHUTDOWN] = 115000,
 			},
 			true,
 			true,
@@ -2462,11 +2462,11 @@ namespace thermal {
 			{ "sys-therm-3" },
 			"skin",
 			{
-			[LIGHT] = 40000,
-			[MODERATE] = 42000,
-			[SEVERE] = 45000,
-			[CRITICAL] = 50000,
-			[EMERGENCY] = 55000,
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
 			[SHUTDOWN] = 90000,
 			},
 			true,
