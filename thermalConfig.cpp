@@ -46,6 +46,54 @@ namespace V2_0 {
 namespace implementation {
 	constexpr std::string_view socIDPath("/sys/devices/soc0/soc_id");
 
+	std::vector<std::string> cpu_sensors_scuba =
+	{
+		"cpuss-0",
+		"cpuss-1",
+		"cpuss-0",
+		"cpuss-1",
+	};
+
+	std::vector<struct target_therm_cfg> sensor_cfg_scuba =
+	{
+		{
+			TemperatureType::CPU,
+			cpu_sensors_scuba,
+			"",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpu" },
+			"GPU",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::SKIN,
+			{ "quiet-therm" },
+			"skin",
+			40000,
+			95000,
+			40000,
+			true,
+		},
+		{
+			TemperatureType::BCL_PERCENTAGE,
+			{ "socd" },
+			"socd",
+			90,
+			99,
+			90,
+			true,
+		},
+	};
+
 	std::vector<std::string> cpu_sensors_bengal =
 	{
 		"cpuss-0",
@@ -1034,6 +1082,126 @@ namespace implementation {
 		},
 	};
 
+	std::vector<struct target_therm_cfg>  kalama_np_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_kalama,
+			"",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0" },
+			"GPU0",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1" },
+			"GPU1",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-2" },
+			"GPU2",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-3" },
+			"GPU3",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-4" },
+			"GPU4",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-5" },
+			"GPU5",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-6" },
+			"GPU6",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-7" },
+			"GPU7",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-0" },
+			"nsp0",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-1" },
+			"nsp1",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-2" },
+			"nsp2",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspss-3" },
+			"nsp3",
+			115000,
+			120000,
+			115000,
+			true,
+		},
+	};
+
 	std::vector<std::string> cpu_sensors_crow =
 	{
 		"cpu-0-0",
@@ -1299,6 +1467,8 @@ namespace implementation {
 		{445, sensor_cfg_bengal},
 		{469, sensor_cfg_bengal},
 		{470, sensor_cfg_bengal},
+		{473, sensor_cfg_scuba},
+		{474, sensor_cfg_scuba},
 		{518, sensor_cfg_khaje},  //khaje
 		{561, sensor_cfg_khaje},  //khajeP
 		{562, sensor_cfg_khaje},  //khajeQ
@@ -1346,7 +1516,7 @@ namespace implementation {
 		{601, kalama_common}, //Kalamap_sg
 		{603, kalama_common}, //Kalama_qcs
 		{604, kalama_common}, //Kalama_qcm
-		{668, kalama_common}, //Kalama_non-pop_qcs
+		{668, kalama_np_common}, //Kalama_non-pop_qcs
 		{688, kalama_common}, //Kalama_non-pop_qcm
 		{486, sensor_cfg_monaco}, // monaco
 		{517, sensor_cfg_monaco}, // monaco
@@ -1382,7 +1552,6 @@ namespace implementation {
 		{601, kalama_specific}, //Kalamap_sg
 		{603, kalama_specific}, //Kalama_qcs
 		{604, kalama_specific}, //Kalama_qcm
-		{668, kalama_specific}, //Kalama_non-pop_qcs
 		{688, kalama_specific}, //Kalama_non-pop_qcm
 		{608, crow_specific}, //crow
 		{644, crow_specific}, //crow
