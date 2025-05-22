@@ -46,6 +46,54 @@ namespace V2_0 {
 namespace implementation {
 	constexpr std::string_view socIDPath("/sys/devices/soc0/soc_id");
 
+	std::vector<std::string> cpu_sensors_scuba =
+	{
+		"cpuss-0",
+		"cpuss-1",
+		"cpuss-0",
+		"cpuss-1",
+	};
+
+	std::vector<struct target_therm_cfg> sensor_cfg_scuba =
+	{
+		{
+			TemperatureType::CPU,
+			cpu_sensors_scuba,
+			"",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpu" },
+			"GPU",
+			95000,
+			115000,
+			95000,
+			true,
+		},
+		{
+			TemperatureType::SKIN,
+			{ "quiet-therm" },
+			"skin",
+			40000,
+			95000,
+			40000,
+			true,
+		},
+		{
+			TemperatureType::BCL_PERCENTAGE,
+			{ "socd" },
+			"socd",
+			90,
+			99,
+			90,
+			true,
+		},
+	};
+
 	std::vector<std::string> cpu_sensors_bengal =
 	{
 		"cpuss-0",
@@ -1419,6 +1467,8 @@ namespace implementation {
 		{445, sensor_cfg_bengal},
 		{469, sensor_cfg_bengal},
 		{470, sensor_cfg_bengal},
+		{473, sensor_cfg_scuba},
+		{474, sensor_cfg_scuba},
 		{518, sensor_cfg_khaje},  //khaje
 		{561, sensor_cfg_khaje},  //khajeP
 		{562, sensor_cfg_khaje},  //khajeQ
