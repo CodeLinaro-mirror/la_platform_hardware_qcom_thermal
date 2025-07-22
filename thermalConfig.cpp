@@ -2007,14 +2007,14 @@ namespace thermal {
 	};
 
 	std::vector<std::string> cpu_sensors_canoe = {
-		"cpu-0-0-0",
-		"cpu-0-1-0",
-		"cpu-0-2-0",
-		"cpu-0-3-0",
-		"cpu-0-4-0",
-		"cpu-0-5-0",
-		"cpu-1-0-0",
-		"cpu-1-1-0",
+		"cpu-0-0-1",
+		"cpu-0-1-1",
+		"cpu-0-2-1",
+		"cpu-0-3-1",
+		"cpu-0-4-1",
+		"cpu-0-5-1",
+		"cpu-1-0-1",
+		"cpu-1-1-1",
 	};
 
 	std::vector<struct target_therm_cfg> canoe_common = {
@@ -2254,7 +2254,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::SKIN,
-			{ "sys-therm-2" },
+			{ "sys-therm-0" },
 			"skin",
 			{
 			[LIGHT] = 48000,
@@ -2266,6 +2266,14 @@ namespace thermal {
 			},
 			true,
 			true,
+			true,
+			{ "sys-therm-0" },
+			{ 0.76 },
+			{ "sys-therm-0" },
+			40000,
+			38000,
+			5160,
+			5000,
 		},
 	};
 
@@ -2285,48 +2293,55 @@ namespace thermal {
 			TemperatureType::CPU,
 			cpu_sensors_vienna,
 			"",
-			95000,
-			115000,
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
 			true,
 		},
 		{
 			TemperatureType::GPU,
 			{ "gpuss-0" },
 			"GPU0",
-			95000,
-			115000,
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
 			true,
 		},
 		{
 			TemperatureType::GPU,
 			{ "gpuss-1" },
 			"GPU1",
-			95000,
-			115000,
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
 			true,
 		},
 		{
 			TemperatureType::NPU,
 			{ "nsphvx-0" },
 			"nsp0",
-			95000,
-			115000,
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
 			true,
 		},
 		{
 			TemperatureType::NPU,
 			{ "nsphmx-0" },
 			"nsp1",
-			95000,
-			115000,
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
 			true,
-		},
-		{
-			TemperatureType::NPU,
-			{ "nspmxu" },
-			"nsp2",
-			95000,
-			115000,
 			true,
 		},
 	};
@@ -2338,16 +2353,265 @@ namespace thermal {
 			"ibat",
 			{
 			[SEVERE] = 2730,
-			[SHUTDOWN] = 3000,
+			[SHUTDOWN] = 3200,
 			},
+			true,
 			true,
 		},
 		{
 			TemperatureType::SKIN,
 			{ "sys-therm-0" },
 			"skin",
-			60000,
-			95000,
+			{
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
+			[SHUTDOWN] = 90000,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<std::string> cpu_sensors_alor = {
+		"cpu-0-0-0",
+		"cpu-0-1-0",
+		"cpu-0-2-0",
+		"cpu-0-3-0",
+		"cpu-0-4-0",
+		"cpu-0-5-0",
+		"cpu-1-0-0",
+		"cpu-1-1-0",
+	};
+
+	std::vector<struct target_therm_cfg> alor_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_alor,
+			"",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0" },
+			"GPU0",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1" },
+			"GPU1",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-2" },
+			"GPU2",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-3" },
+			"GPU3",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-4" },
+			"GPU4",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-5" },
+			"GPU5",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-6" },
+			"GPU6",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-7" },
+			"GPU7",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsphvx-0" },
+			"nsp0",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsphvx-1" },
+			"nsp1",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsphvx-2" },
+			"nsp2",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsphmx-0" },
+			"nsp4",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsphmx-1" },
+			"nsp5",
+			{
+			[SEVERE] = 105000,
+			[SHUTDOWN] = 125000,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg> alor_specific = {
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-3" },
+			"skin",
+			{
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
+			[SHUTDOWN] = 90000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pmih010x-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 11000,
+			[SHUTDOWN] = 11800,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pm7550ba-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 11000,
+			[SHUTDOWN] = 11800,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pmih010x-2s-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 5000,
+			[SHUTDOWN] = 7000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pm7550ba-2s-ibat-lvl0 " },
+			"ibat",
+			{
+			[SEVERE] = 5000,
+			[SHUTDOWN] = 7000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pmiv010x-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 11000,
+			[SHUTDOWN] = 11800,
+			},
+			true,
 			true,
 		},
 	};
@@ -2420,6 +2684,8 @@ namespace thermal {
 		{661, canoe_common}, //Canoep
 		{669, vienna_common}, //SW6100
 		{670, vienna_common}, //SW6100P
+		{685, alor_common}, // Molokai
+		{727, alor_common}, // Molokai APQ
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -2453,6 +2719,8 @@ namespace thermal {
 		{661, canoe_specific}, //Canoep
 		{669, vienna_specific}, //SW6100
 		{670, vienna_specific}, //SW6100P
+		{685, alor_specific}, //Molokai
+		{727, alor_specific}, //Molokai APQ
 	};
 
 	const std::unordered_multimap<int, std::pair<int, std::vector<struct target_therm_cfg>>>
