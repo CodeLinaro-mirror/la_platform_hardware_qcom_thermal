@@ -1354,6 +1354,7 @@ namespace implementation {
 		{653, ravelin_common}, //Clarence Gaming
 		{654, ravelin_common}, //Clarence Gaming
 		{602, ravelin_common}, //Clarence APQ
+		{734, ravelin_common}, //Clarence QMB
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
