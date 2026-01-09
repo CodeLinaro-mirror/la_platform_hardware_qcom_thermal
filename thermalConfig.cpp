@@ -1337,6 +1337,8 @@ namespace implementation {
 		{525, neo_common},
 		{554, neo_common},
 		{579, neo_common},
+		{739, neo_common}, //Aliso
+		{740, neo_common}, //Aliso
 		{537, parrot_common}, //Netrani mobile
 		{583, parrot_common}, //Netrani mobile without modem
 		{613, parrot_common}, //Netrani APQ
@@ -1354,6 +1356,7 @@ namespace implementation {
 		{653, ravelin_common}, //Clarence Gaming
 		{654, ravelin_common}, //Clarence Gaming
 		{602, ravelin_common}, //Clarence APQ
+		{734, ravelin_common}, //Clarence QMB
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
