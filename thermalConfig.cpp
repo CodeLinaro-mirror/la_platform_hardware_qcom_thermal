@@ -3085,6 +3085,68 @@ namespace thermal {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_shikra = {
+		"cpu-0-0",
+		"cpu-0-1",
+		"cpu-0-2",
+		"cpu-1-0",
+		"cpu-1-1",
+	};
+
+	std::vector<struct target_therm_cfg> shikra_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_shikra,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss" },
+			"GPU0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsp" },
+			"nsp0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  shikra_specific = {
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-0" },
+			"skin",
+			{
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
+			[SHUTDOWN] = 90000,
+			},
+			true,
+			true,
+		},
+	};
+
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
 		msm_soc_map = {
 		{417, sensor_cfg_bengal}, // bengal
@@ -3165,6 +3227,9 @@ namespace thermal {
 		{757, malabar_common}, //APQ Aldabara
 		{736, pikachu_common}, //Bonsai
 		{737, pikachu_common}, //Bonsai L
+		{756, shikra_common}, //CQ2390M
+		{758, shikra_common}, //CQ2390S
+		{759, shikra_common}, //IQ2390S
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -3211,6 +3276,9 @@ namespace thermal {
 		{757, malabar_specific}, //APQ Aldabra
 		{736, pikachu_specific}, //Bonsai
 		{737, pikachu_specific}, //Bonsai L
+		{756, shikra_specific}, //CQ2390M
+		{758, shikra_specific}, //CQ2390S
+		{759, shikra_specific}, //IQ2390S
 	};
 
 	const std::unordered_multimap<int, std::pair<int, std::vector<struct target_therm_cfg>>>
