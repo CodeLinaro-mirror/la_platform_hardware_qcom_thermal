@@ -2468,6 +2468,148 @@ namespace thermal {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_purwa = {
+		"cpu-0-0-1-thermal",
+		"cpu-0-1-1-thermal",
+		"cpu-0-2-1-thermal",
+		"cpu-0-3-1-thermal",
+		"cpu-1-0-1-thermal",
+		"cpu-1-1-1-thermal",
+		"cpu-1-2-1-thermal",
+		"cpu-1-3-1-thermal",
+	};
+
+	std::vector<struct target_therm_cfg> purwa_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_purwa,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0-thermal" },
+			"GPU0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1-thermal" },
+			"GPU1",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-2-thermal" },
+			"GPU2",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-3-thermal" },
+			"GPU3",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsp-0-thermal" },
+			"nsp0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsp-1-thermal" },
+			"nsp1",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsp-2-thermal" },
+			"nsp2",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nsp-3-thermal" },
+			"nsp3",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg> purwa_specific = {
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "smb2360_0-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 13500,
+			[SHUTDOWN] = 15000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-2" },
+			"skin",
+			{
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
+			[SHUTDOWN] = 90000,
+			},
+			true,
+			true,
+		},
+	};
+
 	std::vector<std::string> cpu_sensors_vienna = {
 		"cpu-0-0-0",
 		"cpu-0-0-1",
@@ -3222,6 +3364,7 @@ namespace thermal {
 		{685, alor_common}, // Molokai
 		{727, alor_common}, // Molokai APQ
 		{555, hamoa_common}, // Hamoa
+		{635, purwa_common}, // Purwa
 		{724, chora_common}, // Skyros
 		{744, chora_common}, //APQ Skyros
 		{733, malabar_common}, //Aldabara
@@ -3271,6 +3414,7 @@ namespace thermal {
 		{685, alor_specific}, //Molokai
 		{727, alor_specific}, //Molokai APQ
 		{555, hamoa_specific}, // Hamoa
+		{635, purwa_specific}, // Purwa
 		{724, chora_specific}, // Skyros
 		{744, chora_specific}, //APQ Skyros
 		{733, malabar_specific}, // Aldabra
