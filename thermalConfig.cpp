@@ -3148,6 +3148,101 @@ namespace thermal {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_seraph = {
+		"cpu-0-0",
+		"cpu-0-1",
+		"cpu-0-0",
+		"cpu-0-1",
+		"cpu-1-0",
+	};
+
+	std::vector<struct target_therm_cfg> seraph_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_seraph,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpu-0" },
+			"GPU0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpu-1" },
+			"GPU1",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspvxu-0" },
+			"nsp0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspvxu-1" },
+			"nsp1",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspmxu" },
+			"nsp2",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  seraph_specific = {
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-1" },
+			"skin",
+			{
+			[LIGHT] = 55000,
+			[MODERATE] = 58000,
+			[SEVERE] = 60000,
+			[CRITICAL] = 65000,
+			[EMERGENCY] = 90000,
+			[SHUTDOWN] = 95000,
+			},
+			true,
+			true,
+		},
+	};
+
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
 		msm_soc_map = {
 		{417, sensor_cfg_bengal}, // bengal
@@ -3231,6 +3326,8 @@ namespace thermal {
 		{756, shikra_common}, //CQ2390M
 		{758, shikra_common}, //CQ2390S
 		{759, shikra_common}, //IQ2390S
+		{672, seraph_common}, //Balsam-SAR1250P
+		{673, seraph_common}, //Balsam-SAR2230P
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -3280,6 +3377,8 @@ namespace thermal {
 		{756, shikra_specific}, //CQ2390M
 		{758, shikra_specific}, //CQ2390S
 		{759, shikra_specific}, //IQ2390S
+		{672, seraph_specific}, //Balsam-SAR1250P
+		{673, seraph_specific}, //Balsam-SAR2230P
 	};
 
 	const std::unordered_multimap<int, std::pair<int, std::vector<struct target_therm_cfg>>>
