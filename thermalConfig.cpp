@@ -2257,11 +2257,11 @@ namespace thermal {
 			{ "sys-therm-0" },
 			"skin",
 			{
-			[LIGHT] = 48000,
-			[MODERATE] = 49000,
-			[SEVERE] = 50000,
-			[CRITICAL] = 60000,
-			[EMERGENCY] = 61000,
+			[LIGHT] = 43000,
+			[MODERATE] = 44000,
+			[SEVERE] = 46000,
+			[CRITICAL] = 55000,
+			[EMERGENCY] = 56000,
 			[SHUTDOWN] = 90000,
 			},
 			true,
@@ -2859,17 +2859,6 @@ namespace thermal {
 			true,
 			true,
 		},
-		{
-			TemperatureType::GPU,
-			{ "gpuss-2" },
-			"GPU2",
-			{
-			[SEVERE] = 95000,
-			[SHUTDOWN] = 115000,
-			},
-			true,
-			true,
-		},
 	};
 
 	std::vector<struct target_therm_cfg>  chora_specific = {
@@ -2906,6 +2895,190 @@ namespace thermal {
 			{
 			[SEVERE] = 11000,
 			[SHUTDOWN] = 11800,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<std::string> cpu_sensors_malabar = {
+		"cpu-0-0",
+		"cpu-0-1",
+		"cpu-0-2",
+		"cpu-0-3",
+		"cpu-1-0",
+		"cpu-1-1",
+		"cpu-2-0",
+		"cpu-2-1",
+	};
+	std::vector<struct target_therm_cfg> malabar_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_malabar,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0" },
+			"GPU0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1" },
+			"GPU1",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  malabar_specific = {
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-0" },
+			"skin",
+			{
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
+			[SHUTDOWN] = 90000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pm7250b-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pmiv010x-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg> pikachu_common = {
+		{
+			TemperatureType::CPU,
+			{ "cpu-0" },
+			"CPU0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::CPU,
+			{ "cpu-1" },
+			"CPU1",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpu-0" },
+			"GPU0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpu-1" },
+			"GPU1",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspvxu-0" },
+			"nsp0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspvxu-1" },
+			"nsp1",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::NPU,
+			{ "nspmxu" },
+			"nsp2",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  pikachu_specific = {
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-1" },
+			"skin",
+			{
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
+			[SHUTDOWN] = 90000,
 			},
 			true,
 			true,
@@ -2988,6 +3161,10 @@ namespace thermal {
 		{555, hamoa_common}, // Hamoa
 		{724, chora_common}, // Skyros
 		{744, chora_common}, //APQ Skyros
+		{733, malabar_common}, //Aldabara
+		{757, malabar_common}, //APQ Aldabara
+		{736, pikachu_common}, //Bonsai
+		{737, pikachu_common}, //Bonsai L
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -3019,8 +3196,8 @@ namespace thermal {
 		{663, parrot_specific}, //Netrani pro
 		{660, canoe_specific}, //Canoe
 		{661, canoe_specific}, //Canoep
-		{722, canoe_common}, //Alana
-                {723, canoe_common}, //Alana APQ
+		{722, canoe_specific}, //Alana
+                {723, canoe_specific}, //Alana APQ
                 {743, canoe_common}, //Gaming SKU
 
 		{669, vienna_specific}, //SW6100
@@ -3030,6 +3207,10 @@ namespace thermal {
 		{555, hamoa_specific}, // Hamoa
 		{724, chora_specific}, // Skyros
 		{744, chora_specific}, //APQ Skyros
+		{733, malabar_specific}, // Aldabra
+		{757, malabar_specific}, //APQ Aldabra
+		{736, pikachu_specific}, //Bonsai
+		{737, pikachu_specific}, //Bonsai L
 	};
 
 	const std::unordered_multimap<int, std::pair<int, std::vector<struct target_therm_cfg>>>
