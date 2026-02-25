@@ -2568,6 +2568,7 @@ namespace thermal {
 		{654, ravelin_common}, //Clarence Gaming
 		{774, ravelin_common}, //Clarence Industrial IOT
                 {773, ravelin_common}, //Clarence Industrial IOT without modem
+		{734, ravelin_common}, //Clarence QMB
 		{681, tuna_common}, //Bonito
 		{655, tuna_common}, //Bonito
 		{694, tuna_common}, //Bonito
