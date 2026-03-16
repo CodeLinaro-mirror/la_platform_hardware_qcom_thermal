@@ -1475,6 +1475,7 @@ namespace implementation {
 		{584, sensor_cfg_khaje},  //khajeXR
 		{585, sensor_cfg_khaje},  //khajeG
 		{586, sensor_cfg_khaje},  //khajeIOT
+		{762, sensor_cfg_khaje},  //KhajeSMP
 		{394, sensor_cfg_trinket},
 		{467, sensor_cfg_trinket},
 		{468, sensor_cfg_trinket},
