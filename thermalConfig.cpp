@@ -701,7 +701,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::GPU,
-			{ "gpuss-0-usr" },
+			{ "gpuss-0" },
 			"GPU0",
 			{
 			[SEVERE] = 95000,
@@ -711,7 +711,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::GPU,
-			{ "gpuss-1-usr" },
+			{ "gpuss-1" },
 			"GPU1",
 			{
 			[SEVERE] = 95000,
@@ -731,7 +731,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::NPU,
-			{ "nspss-0-usr" },
+			{ "nspss-0" },
 			"nsp0",
 			{
 			[SEVERE] = 95000,
@@ -741,7 +741,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::NPU,
-			{ "nspss-1-usr" },
+			{ "nspss-1" },
 			"nsp1",
 			{
 			[SEVERE] = 95000,
@@ -751,7 +751,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::NPU,
-			{ "nspss-2-usr" },
+			{ "nspss-2" },
 			"nsp2",
 			{
 			[SEVERE] = 95000,
@@ -764,7 +764,7 @@ namespace thermal {
 	std::vector<struct target_therm_cfg>  lahaina_specific = {
 		{
 			TemperatureType::SKIN,
-			{ "xo-therm-usr" },
+			{ "xo-therm" },
 			"skin",
 			{
 			[LIGHT] = 36500,
