@@ -131,6 +131,62 @@ namespace thermal {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_scuba =
+	{
+		"cpuss-0",
+		"cpuss-1",
+		"cpuss-0",
+		"cpuss-1",
+	};
+
+	std::vector<struct target_therm_cfg> sensor_cfg_scuba =
+	{
+		{
+			TemperatureType::CPU,
+			cpu_sensors_scuba,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpu" },
+			"GPU",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::SKIN,
+			{ "quiet-therm" },
+			"skin",
+			{
+			[LIGHT] = 36500,
+			[MODERATE] = 40000,
+			[SEVERE] = 46500,
+			[CRITICAL] = 50000,
+			[EMERGENCY] = 55000,
+			[SHUTDOWN] = 95000,
+			},
+			true,
+		},
+		{
+			TemperatureType::BCL_PERCENTAGE,
+			{ "socd" },
+			"socd",
+			{
+			[SEVERE] = 90,
+			[SHUTDOWN] = 99,
+			},
+			true,
+		},
+	};
+
 	std::vector<std::string> cpu_sensors_khaje =
 	{
 		"cpuss-2",
@@ -3398,6 +3454,8 @@ namespace thermal {
 		{469, sensor_cfg_bengal},
 		{470, sensor_cfg_bengal},
 		{518, sensor_cfg_khaje},  //khaje
+		{473, sensor_cfg_scuba},
+		{474, sensor_cfg_scuba},
 		{394, sensor_cfg_trinket},
 		{467, sensor_cfg_trinket},
 		{468, sensor_cfg_trinket},
