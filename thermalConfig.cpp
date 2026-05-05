@@ -53,14 +53,14 @@ namespace thermal {
 
 	std::vector<std::string> cpu_sensors_bengal =
 	{
-		"cpuss-2-usr",
-		"cpuss-2-usr",
-		"cpuss-2-usr",
-		"cpuss-2-usr",
-		"cpu-1-0-usr",
-		"cpu-1-1-usr",
-		"cpu-1-2-usr",
-		"cpu-1-3-usr",
+		"cpuss-2",
+		"cpuss-2",
+		"cpuss-2",
+		"cpuss-2",
+		"cpu-1-0",
+		"cpu-1-1",
+		"cpu-1-2",
+		"cpu-1-3",
 	};
 
 	std::vector<struct target_therm_cfg> sensor_cfg_bengal =
@@ -77,7 +77,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::GPU,
-			{ "gpu-usr" },
+			{ "gpu" },
 			"GPU",
 			{
 			[SEVERE] = 95000,
@@ -87,7 +87,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::SKIN,
-			{ "xo-therm-usr" },
+			{ "xo-therm" },
 			"skin",
 			{
 			[LIGHT] = 36500,
@@ -101,7 +101,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::BCL_VOLTAGE,
-			{ "pmi632-vbat-lvl0" },
+			{ "vbat" },
 			"vbat",
 			{
 			[SEVERE] = 3000,
@@ -125,7 +125,7 @@ namespace thermal {
 			"socd",
 			{
 			[SEVERE] = 90,
-			[SHUTDOWN] = 98,
+			[SHUTDOWN] = 99,
 			},
 			true,
 		},
