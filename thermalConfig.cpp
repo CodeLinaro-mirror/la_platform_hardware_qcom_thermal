@@ -3475,6 +3475,83 @@ namespace thermal {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_ravelin =
+	{
+		"cpu-0-0",
+		"cpu-0-1",
+		"cpu-0-2",
+		"cpu-0-3",
+		"cpu-0-4",
+		"cpu-0-5",
+		"cpu-1-0",
+		"cpu-1-2",
+	};
+
+	std::vector<struct target_therm_cfg>  ravelin_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_ravelin,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss" },
+			"GPU",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-1" },
+			"skin",
+			{
+			[LIGHT] = 50000,
+			[MODERATE] = 52000,
+			[SEVERE] = 55000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 65000,
+			[SHUTDOWN] = 95000,
+			},
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  ravelin_specific_qrd = {
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pmi632-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  ravelin_specific_idp = {
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pm7250b-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+	};
+
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
 		msm_soc_map = {
 		{417, sensor_cfg_bengal}, // bengal
@@ -3563,6 +3640,14 @@ namespace thermal {
 		{673, seraph_common}, //Balsam-SAR2230P
 		{776, bourtzi_common}, //Poros-SM4875
 		{777, bourtzi_common}, //Poros-SM4875P
+		{568, ravelin_common}, //Clarence Mobile
+		{581, ravelin_common}, //Clarence IOT
+		{582, ravelin_common}, //Clarence IOT without modem
+		{653, ravelin_common}, //Clarence Gaming
+		{654, ravelin_common}, //Clarence Gaming
+		{734, ravelin_common}, //Clarence QMB
+		{774, ravelin_common}, //Clarence Industrial IOT
+		{773, ravelin_common}, //Clarence Industrial IOT without modem
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -3625,6 +3710,13 @@ namespace thermal {
 		{618, std::make_pair(1, sun_profile1)},
 		{639, std::make_pair(0, sun_profile0)},
 		{639, std::make_pair(1, sun_profile1)},
+	};
+
+	const std::unordered_multimap<int, std::pair<std::string,
+				std::vector<struct target_therm_cfg>>>
+		msm_platform_specific = {
+		{568, std::make_pair("QRD", ravelin_specific_qrd)},
+		{568, std::make_pair("IDP", ravelin_specific_idp)},
 	};
 
 	std::vector<struct target_therm_cfg> add_target_config(
