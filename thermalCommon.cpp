@@ -300,14 +300,10 @@ int ThermalCommon::initThermalZones(std::vector<struct target_therm_cfg>& cfg)
 
 	for (it = cfg.begin(); it != cfg.end(); it++)
 	{
-		if (it->type == TemperatureType::CPU) {
-			if (initializeCpuSensor(*it) < 0)
-				return -1;
-			continue;
-		}
-		if (initialize_sensor(*it, 0) < 0) {
-			return -1;
-		}
+		if (it->type == TemperatureType::CPU)
+			initializeCpuSensor(*it);
+		else
+			initialize_sensor(*it, 0);
 	}
 
 	return sens.size();
