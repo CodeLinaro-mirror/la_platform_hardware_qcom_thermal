@@ -3275,7 +3275,7 @@ namespace thermal {
 	std::vector<struct target_therm_cfg>  shikra_specific = {
 		{
 			TemperatureType::SKIN,
-			{ "sys-therm-0" },
+			{ "sys-therm-2" },
 			"skin",
 			{
 			[LIGHT] = 48000,
