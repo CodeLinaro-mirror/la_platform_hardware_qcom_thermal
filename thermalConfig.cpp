@@ -3293,7 +3293,6 @@ namespace thermal {
 		"cpu-0-1",
 		"cpu-0-2",
 		"cpu-1-0",
-		"cpu-1-1",
 	};
 
 	std::vector<struct target_therm_cfg> shikra_common = {
