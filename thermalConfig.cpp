@@ -53,14 +53,14 @@ namespace thermal {
 
 	std::vector<std::string> cpu_sensors_bengal =
 	{
-		"cpuss-2-usr",
-		"cpuss-2-usr",
-		"cpuss-2-usr",
-		"cpuss-2-usr",
-		"cpu-1-0-usr",
-		"cpu-1-1-usr",
-		"cpu-1-2-usr",
-		"cpu-1-3-usr",
+		"cpuss-2",
+		"cpuss-2",
+		"cpuss-2",
+		"cpuss-2",
+		"cpu-1-0",
+		"cpu-1-1",
+		"cpu-1-2",
+		"cpu-1-3",
 	};
 
 	std::vector<struct target_therm_cfg> sensor_cfg_bengal =
@@ -77,7 +77,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::GPU,
-			{ "gpu-usr" },
+			{ "gpu" },
 			"GPU",
 			{
 			[SEVERE] = 95000,
@@ -87,7 +87,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::SKIN,
-			{ "xo-therm-usr" },
+			{ "xo-therm" },
 			"skin",
 			{
 			[LIGHT] = 36500,
@@ -101,7 +101,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::BCL_VOLTAGE,
-			{ "pmi632-vbat-lvl0" },
+			{ "vbat" },
 			"vbat",
 			{
 			[SEVERE] = 3000,
@@ -125,7 +125,7 @@ namespace thermal {
 			"socd",
 			{
 			[SEVERE] = 90,
-			[SHUTDOWN] = 98,
+			[SHUTDOWN] = 99,
 			},
 			true,
 		},
@@ -701,7 +701,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::GPU,
-			{ "gpuss-0-usr" },
+			{ "gpuss-0" },
 			"GPU0",
 			{
 			[SEVERE] = 95000,
@@ -711,7 +711,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::GPU,
-			{ "gpuss-1-usr" },
+			{ "gpuss-1" },
 			"GPU1",
 			{
 			[SEVERE] = 95000,
@@ -731,7 +731,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::NPU,
-			{ "nspss-0-usr" },
+			{ "nspss-0" },
 			"nsp0",
 			{
 			[SEVERE] = 95000,
@@ -741,7 +741,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::NPU,
-			{ "nspss-1-usr" },
+			{ "nspss-1" },
 			"nsp1",
 			{
 			[SEVERE] = 95000,
@@ -751,7 +751,7 @@ namespace thermal {
 		},
 		{
 			TemperatureType::NPU,
-			{ "nspss-2-usr" },
+			{ "nspss-2" },
 			"nsp2",
 			{
 			[SEVERE] = 95000,
@@ -764,7 +764,7 @@ namespace thermal {
 	std::vector<struct target_therm_cfg>  lahaina_specific = {
 		{
 			TemperatureType::SKIN,
-			{ "xo-therm-usr" },
+			{ "xo-therm" },
 			"skin",
 			{
 			[LIGHT] = 36500,
@@ -3138,22 +3138,18 @@ namespace thermal {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_pikachu = {
+		"cpu-0",
+		"cpu-1",
+		"cpu-0",
+		"cpu-1",
+	};
+
 	std::vector<struct target_therm_cfg> pikachu_common = {
 		{
 			TemperatureType::CPU,
-			{ "cpu-0" },
-			"CPU0",
-			{
-			[SEVERE] = 95000,
-			[SHUTDOWN] = 115000,
-			},
-			true,
-			true,
-		},
-		{
-			TemperatureType::CPU,
-			{ "cpu-1" },
-			"CPU1",
+			cpu_sensors_pikachu,
+			"",
 			{
 			[SEVERE] = 95000,
 			[SHUTDOWN] = 115000,
