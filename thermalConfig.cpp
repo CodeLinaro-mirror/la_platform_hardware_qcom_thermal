@@ -1407,6 +1407,17 @@ std::vector<std::string> cpu_sensors_cliffs = {
 		},
 	};
 
+	std::vector<struct target_therm_cfg>  pitti_wear_specific = {
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-0" },
+			"skin",
+			40000,
+			95000,
+			true,
+		},
+	};
+
 	std::vector<std::string> cpu_sensors_niobe = {
 		"cpu-0-0-0",
 		"cpu-0-1-0",
@@ -2016,6 +2027,7 @@ std::vector<std::string> cpu_sensors_cliffs = {
 		{486, sensor_cfg_monaco}, // monaco
 		{517, sensor_cfg_monaco}, // monaco
 		{623, sensor_cfg_pitti}, // Kalpeni
+		{788, sensor_cfg_pitti}, // Snowmass
 		{629, niobe_common}, //Matrix
 		{652, niobe_common}, // Matrix_4k
 		{636, volcano_common}, //milos
@@ -2063,6 +2075,7 @@ std::vector<std::string> cpu_sensors_cliffs = {
 		{632, cliffs_specific}, //cliffs
 		{614, cliffs_specific}, //cliffs7
 		{623, pitti_specific}, // Kalpeni
+		{788, pitti_wear_specific}, // Snowmass
 		{629, niobe_specific}, // Matrix
 		{652, niobe_specific}, // Matrix_4k
 		{636, volcano_specific}, //milos
