@@ -131,6 +131,62 @@ namespace thermal {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_scuba =
+	{
+		"cpuss-0",
+		"cpuss-1",
+		"cpuss-0",
+		"cpuss-1",
+	};
+
+	std::vector<struct target_therm_cfg> sensor_cfg_scuba =
+	{
+		{
+			TemperatureType::CPU,
+			cpu_sensors_scuba,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpu" },
+			"GPU",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::SKIN,
+			{ "quiet-therm" },
+			"skin",
+			{
+			[LIGHT] = 36500,
+			[MODERATE] = 40000,
+			[SEVERE] = 46500,
+			[CRITICAL] = 50000,
+			[EMERGENCY] = 55000,
+			[SHUTDOWN] = 95000,
+			},
+			true,
+		},
+		{
+			TemperatureType::BCL_PERCENTAGE,
+			{ "socd" },
+			"socd",
+			{
+			[SEVERE] = 90,
+			[SHUTDOWN] = 99,
+			},
+			true,
+		},
+	};
+
 	std::vector<std::string> cpu_sensors_khaje =
 	{
 		"cpuss-2",
@@ -3237,7 +3293,6 @@ namespace thermal {
 		"cpu-0-1",
 		"cpu-0-2",
 		"cpu-1-0",
-		"cpu-1-1",
 	};
 
 	std::vector<struct target_therm_cfg> shikra_common = {
@@ -3279,7 +3334,7 @@ namespace thermal {
 	std::vector<struct target_therm_cfg>  shikra_specific = {
 		{
 			TemperatureType::SKIN,
-			{ "sys-therm-0" },
+			{ "sys-therm-2" },
 			"skin",
 			{
 			[LIGHT] = 48000,
@@ -3389,6 +3444,169 @@ namespace thermal {
 		},
 	};
 
+	std::vector<std::string> cpu_sensors_bourtzi = {
+		"cpu-0-0",
+		"cpu-0-1",
+		"cpu-0-2",
+		"cpu-0-3",
+		"cpu-0-4",
+		"cpu-0-5",
+		"cpu-1-0",
+		"cpu-1-2",
+	};
+	std::vector<struct target_therm_cfg> bourtzi_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_bourtzi,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-0" },
+			"GPU0",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss-1" },
+			"GPU1",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  bourtzi_specific = {
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-0" },
+			"skin",
+			{
+			[LIGHT] = 48000,
+			[MODERATE] = 49000,
+			[SEVERE] = 50000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 61000,
+			[SHUTDOWN] = 90000,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pm7250b-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pmiv010x-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<std::string> cpu_sensors_ravelin =
+	{
+		"cpu-0-0",
+		"cpu-0-1",
+		"cpu-0-2",
+		"cpu-0-3",
+		"cpu-0-4",
+		"cpu-0-5",
+		"cpu-1-0",
+		"cpu-1-2",
+	};
+
+	std::vector<struct target_therm_cfg>  ravelin_common = {
+		{
+			TemperatureType::CPU,
+			cpu_sensors_ravelin,
+			"",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::GPU,
+			{ "gpuss" },
+			"GPU",
+			{
+			[SEVERE] = 95000,
+			[SHUTDOWN] = 115000,
+			},
+			true,
+		},
+		{
+			TemperatureType::SKIN,
+			{ "sys-therm-1" },
+			"skin",
+			{
+			[LIGHT] = 50000,
+			[MODERATE] = 52000,
+			[SEVERE] = 55000,
+			[CRITICAL] = 60000,
+			[EMERGENCY] = 65000,
+			[SHUTDOWN] = 95000,
+			},
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  ravelin_specific_qrd = {
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pmi632-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+	};
+
+	std::vector<struct target_therm_cfg>  ravelin_specific_idp = {
+		{
+			TemperatureType::BCL_CURRENT,
+			{ "pm7250b-ibat-lvl0" },
+			"ibat",
+			{
+			[SEVERE] = 6000,
+			[SHUTDOWN] = 7500,
+			},
+			true,
+			true,
+		},
+	};
+
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
 		msm_soc_map = {
 		{417, sensor_cfg_bengal}, // bengal
@@ -3398,6 +3616,8 @@ namespace thermal {
 		{469, sensor_cfg_bengal},
 		{470, sensor_cfg_bengal},
 		{518, sensor_cfg_khaje},  //khaje
+		{473, sensor_cfg_scuba},
+		{474, sensor_cfg_scuba},
 		{394, sensor_cfg_trinket},
 		{467, sensor_cfg_trinket},
 		{468, sensor_cfg_trinket},
@@ -3475,6 +3695,16 @@ namespace thermal {
 		{759, shikra_common}, //IQ2390S
 		{672, seraph_common}, //Balsam-SAR1250P
 		{673, seraph_common}, //Balsam-SAR2230P
+		{776, bourtzi_common}, //Poros-SM4875
+		{777, bourtzi_common}, //Poros-SM4875P
+		{568, ravelin_common}, //Clarence Mobile
+		{581, ravelin_common}, //Clarence IOT
+		{582, ravelin_common}, //Clarence IOT without modem
+		{653, ravelin_common}, //Clarence Gaming
+		{654, ravelin_common}, //Clarence Gaming
+		{734, ravelin_common}, //Clarence QMB
+		{774, ravelin_common}, //Clarence Industrial IOT
+		{773, ravelin_common}, //Clarence Industrial IOT without modem
 	};
 
 	const std::unordered_map<int, std::vector<struct target_therm_cfg>>
@@ -3527,6 +3757,8 @@ namespace thermal {
 		{759, shikra_specific}, //IQ2390S
 		{672, seraph_specific}, //Balsam-SAR1250P
 		{673, seraph_specific}, //Balsam-SAR2230P
+		{776, bourtzi_specific}, //Poros-SM4875
+		{777, bourtzi_specific}, //Poros-SM4875P
 	};
 
 	const std::unordered_multimap<int, std::pair<int, std::vector<struct target_therm_cfg>>>
@@ -3535,6 +3767,13 @@ namespace thermal {
 		{618, std::make_pair(1, sun_profile1)},
 		{639, std::make_pair(0, sun_profile0)},
 		{639, std::make_pair(1, sun_profile1)},
+	};
+
+	const std::unordered_multimap<int, std::pair<std::string,
+				std::vector<struct target_therm_cfg>>>
+		msm_platform_specific = {
+		{568, std::make_pair("QRD", ravelin_specific_qrd)},
+		{568, std::make_pair("IDP", ravelin_specific_idp)},
 	};
 
 	std::vector<struct target_therm_cfg> add_target_config(
