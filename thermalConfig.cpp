@@ -3163,6 +3163,7 @@ namespace thermal {
 		{744, chora_common}, //APQ Skyros
 		{733, malabar_common}, //Aldabara
 		{757, malabar_common}, //APQ Aldabara
+		{800, malabar_specific}, //Aldabra for WBC
 		{736, pikachu_common}, //Bonsai
 		{737, pikachu_common}, //Bonsai L
 	};
@@ -3209,6 +3210,7 @@ namespace thermal {
 		{744, chora_specific}, //APQ Skyros
 		{733, malabar_specific}, // Aldabra
 		{757, malabar_specific}, //APQ Aldabra
+		{800, malabar_specific}, //Aldabra for WBC
 		{736, pikachu_specific}, //Bonsai
 		{737, pikachu_specific}, //Bonsai L
 	};
@@ -3310,4 +3312,3 @@ namespace thermal {
 }  // namespace hardware
 }  // namespace android
 }  // namespace aidl
-
